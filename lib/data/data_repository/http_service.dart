@@ -5,7 +5,7 @@ class NewsAPIRepository {
     http.Response response;
     try {
       response = await http.get(Uri.parse(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=ab3b6086568c4c00ad6c843bf2aa2cf5"));
+          "https://newsapi.org/v2/top-headlines?country=tr&apiKey=53d75c461d0c45de8ccb4813c3c050dc"));
     } catch (hata) {
       print(hata);
     }
