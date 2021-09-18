@@ -59,13 +59,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 } else if (state is NewsLoadedState) {
                   return ListView.builder(
-                      itemCount: state.articleList.length,
+                      itemCount: state.articleList.articles.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () async {
                             if (Platform.isAndroid) {
                               FlutterWebBrowser.openWebPage(
-                                url: state.articleList[index].url,
+                                url: state.articleList.articles[index].url,
                                 customTabsOptions: CustomTabsOptions(
                                   colorScheme: CustomTabsColorScheme.dark,
                                   toolbarColor: Colors.deepPurple,
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             } else if (Platform.isIOS) {
                               FlutterWebBrowser.openWebPage(
-                                url: state.articleList[index].url,
+                                url: state.articleList.articles[index].url,
                                 safariVCOptions: SafariViewControllerOptions(
                                   barCollapsingEnabled: true,
                                   preferredBarTintColor: Colors.green,
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             } else {
                               await FlutterWebBrowser.openWebPage(
-                                  url: state.articleList[index].url);
+                                  url: state.articleList.articles[index].url);
                             }
                           },
                           child: Container(
@@ -125,10 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       image: DecorationImage(
                                           image: NetworkImage(
-                                            state.articleList[index]
+                                            state.articleList.articles[index]
                                                         .urlToImage !=
                                                     null
-                                                ? state.articleList[index]
+                                                ? state.articleList.articles[index]
                                                     .urlToImage
                                                 : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSojwMMYZgtiupM4Vzdb5iBeE4b0Mamf3AgrxQJR19Xa4oIWV5xun9a02Ggyh4bZAurP_c&usqp=CAU",
                                           ),
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: EdgeInsets.symmetric(
                                       vertical: height * 0.01),
                                   child: Text(
-                                    state.articleList[index].title,
+                                    state.articleList.articles[index].title,
                                     overflow: TextOverflow.clip,
                                     style: TextStyle(
                                       color: Colors.black,

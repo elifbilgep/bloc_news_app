@@ -1,4 +1,33 @@
 class Article {
+  String status;
+  int totalResults;
+  List<Articles> articles;
+
+  Article({this.status, this.totalResults, this.articles});
+
+  Article.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    totalResults = json['totalResults'];
+    if (json['articles'] != null) {
+      articles = new List<Articles>();
+      json['articles'].forEach((v) {
+        articles.add(new Articles.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['totalResults'] = this.totalResults;
+    if (this.articles != null) {
+      data['articles'] = this.articles.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Articles {
   Source source;
   String author;
   String title;
@@ -8,7 +37,7 @@ class Article {
   String publishedAt;
   String content;
 
-  Article(
+  Articles(
       {this.source,
       this.author,
       this.title,
@@ -18,7 +47,7 @@ class Article {
       this.publishedAt,
       this.content});
 
-  Article.fromJson(Map<String, dynamic> json) {
+  Articles.fromJson(Map<String, dynamic> json) {
     source =
         json['source'] != null ? new Source.fromJson(json['source']) : null;
     author = json['author'];

@@ -14,7 +14,7 @@ class NewsInitSate extends NewsStates {}
 class NewsLoadingState extends NewsStates {}
 
 class NewsLoadedState extends NewsStates {
-  final List<Article> articleList;
+  final Article articleList;
   NewsLoadedState({@required this.articleList});
 }
 

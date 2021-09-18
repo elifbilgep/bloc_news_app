@@ -5,20 +5,13 @@ import 'package:bloc_news_app/data/data_repository/http_service.dart';
 import 'package:bloc_news_app/data/models/article_model.dart';
 
 class ArticleRepository {
-  Future<List<Article>> fetchNewsFromDataRepo() async {
+ Future<Article> fetchNewsFromDataRepo() async {
     try {
       final response = await NewsAPIRepository.fetchNews();
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        List<Article> _articleModelList = [];
-        for (var item in data["articles"]) {
-          print(item);
-
-          Article _artcileModel = Article.fromJson(item);
-          _articleModelList.add(_artcileModel);
-        }
-
-        return _articleModelList;
+        final result = Article.fromJson(data);
+        return result;
       } else {
         return null;
       }

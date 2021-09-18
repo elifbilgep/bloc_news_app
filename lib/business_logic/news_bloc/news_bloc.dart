@@ -21,7 +21,7 @@ class NewsBloc extends Bloc<NewsEvents, NewsStates> {
   Stream<NewsStates> mapEventToState(NewsEvents event) async* {
     if (event is StartEvent) {
       try {
-        List<Article> _articleList = [];
+        Article _articleList;
         yield NewsLoadingState();
         _articleList = await articleRepository.fetchNewsFromDataRepo();
         print(_articleList.toString());
