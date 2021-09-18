@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bloc_news_app/business_logic/news_bloc/news_events.dart';
 import 'package:bloc_news_app/business_logic/news_bloc/news_states.dart';
 import 'package:bloc_news_app/data/models/article_model.dart';
