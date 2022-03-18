@@ -12,6 +12,4 @@
 <p align= "center" >
   <img width= "400"
        src = "https://github.com/elifbilgep/bloc_news_app/blob/main/assets/wep_page.png" alt ="">
-<br>
-  <h3 align = "center"> Cheat Categories Page </h3>
-</p>
+
